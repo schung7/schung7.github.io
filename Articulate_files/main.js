@@ -73,7 +73,12 @@ $(document).ready(function() {
         $.vegas("next")
     }), $("#vegas-prev").click(function() {
         $.vegas("previous")
-    }), $("#contact-form").validate({
+    }), $("#sorry").hover(function() {
+        $(this).html("Github Pages does not support this functionality!");
+    }, function() {
+        $(this).html("Submit Message");
+    }),
+    $("#contact-form").validate({
         rules: {
             name: {
                 minlength: 2,
@@ -94,19 +99,33 @@ $(document).ready(function() {
         success: function(e) {
             e.text("OK!").addClass("valid").closest(".control-group").removeClass("error").addClass("success")
         },
-        submitHandler: function(form) {
+        submitHandler: function() {
+            /*
             data = {}
           	data["name"] = form.name.value
           	data["email"] = form.email.value
           	data["message"] = form.message.value
             $.ajax({
               url: "./Articulate_files/form.php",
-              type: "post",
+              type: "POST",
               data: data,
               success: function(response) {
-                  console.log(response)
+                    $('#success').html("<div class='alert alert-success'>");
+                    $('#success > .alert-success').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
+                        .append("</button>");
+                    $('#success > .alert-success')
+                        .append("<strong>Your message has been sent. </strong>");
+                    $('#success > .alert-success')
+                        .append('</div>');
+
+                    //clear all fields
+                    $('#contact-form').trigger("reset");
+              },
+              error: function() {
+
               }
             })
+            */
             return false
         }
     })
