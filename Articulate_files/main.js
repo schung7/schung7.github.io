@@ -74,7 +74,7 @@ $(document).ready(function() {
     }), $("#vegas-prev").click(function() {
         $.vegas("previous")
     }), $("#sorry").hover(function() {
-        $(this).html("Github Pages does not support this functionality!");
+        $(this).html("Sorry, Github Pages does not support this functionality!");
     }, function() {
         $(this).html("Submit Message");
     }),
